@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#101722" />
+  <title>Tank District — 3D arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Tank District home"><span class="brand-mark">▰</span><span>TANK<span class="brand-light">DISTRICT</span></span></a>
+      <div class="live-tag"><i></i> LIVE ARENA <span>01</span></div>
+      <button id="sound-button" class="sound-button" aria-label="Toggle sound">♫ <span>SOUND ON</span></button>
+    </header>
+    <section class="hud" id="hud" hidden>
+      <div class="player-card"><div class="player-icon">▰</div><div><div class="tiny-label">PILOT</div><strong id="hud-name">SCOUT</strong></div><div class="level-pill">LVL <b id="level">1</b></div></div>
+      <div class="health-wrap"><div class="bar-label"><span>HULL INTEGRITY</span><b id="hp-text">100 / 100</b></div><div class="bar"><i id="hp-bar"></i></div></div>
+      <div class="xp-wrap"><div class="bar-label"><span>EXPERIENCE</span><b id="xp-text">0 / 100</b></div><div class="bar xp-bar"><i id="xp-bar"></i></div></div>
+    </section>
+    <aside class="scoreboard" id="scoreboard" hidden><div class="tiny-label">ARENA STATS</div><div class="score-row"><span>ELIMINATIONS</span><b id="kills">00</b></div><div class="score-row"><span>THREAT LEVEL</span><b class="threat">RISING</b></div><div class="score-row"><span>FIELD SCORE</span><b id="score">0000</b></div><div class="key-hint"><span>WASD</span> MOVE <span>MOUSE</span> AIM + FIRE</div></aside>
+    <div class="crosshair" id="crosshair"></div>
+    <div class="mobile-controls" id="mobile-controls" hidden><div id="stick-zone" class="stick-zone"><div id="stick-knob"></div></div><button id="fire-button">FIRE</button></div>
+    <section class="screen welcome-screen" id="welcome-screen">
+      <div class="welcome-copy"><div class="eyebrow"><span></span> THE ARENA IS YOURS</div><h1>BUILD YOUR<br><em>LEGEND.</em></h1><p>Outmaneuver. Outgun. Outlast. Take control of the arena and climb the leaderboard.</p><div class="feature-list"><span><b>01</b> 3D OPEN ARENA</span><span><b>02</b> 6 UNIQUE TANKS</span><span><b>03</b> LIVE UPGRADES</span></div></div>
+      <div class="tank-select"><div class="select-heading"><div><div class="tiny-label">CHOOSE YOUR LOADOUT</div><h2>Pick a tank</h2></div><span class="select-count">01 <i>/</i> 06</span></div><div class="tank-grid" id="tank-grid"></div><button id="deploy-button" class="deploy-button">DEPLOY TO ARENA <span>↗</span></button><div class="select-foot"><span>WASD TO MOVE</span><span>CLICK TO FIRE</span><span>SPACE TO DASH</span></div></div>
+      <div class="screen-bottom"><span>TANK DISTRICT <i>•</i> SECTOR 07</span><span>NO SAFE ZONE. NO SECOND CHANCES.</span></div>
+    </section>
+    <section class="screen upgrade-screen" id="upgrade-screen" hidden><div class="upgrade-panel"><div class="eyebrow"><span></span> COMBAT DATA ACQUIRED</div><h2>LEVEL UP</h2><p>Choose an upgrade to get back in the fight.</p><div class="upgrade-options" id="upgrade-options"></div><div class="upgrade-hint">PRESS <b>1</b>, <b>2</b>, OR <b>3</b> TO SELECT</div></div></section>
+    <section class="screen gameover-screen" id="gameover-screen" hidden><div class="gameover-panel"><div class="eyebrow"><span></span> SIGNAL LOST</div><h2>RUN<br><em>ENDED.</em></h2><div class="run-stats"><div><span>ELIMINATIONS</span><b id="final-kills">0</b></div><div><span>REACHED LEVEL</span><b id="final-level">1</b></div><div><span>FIELD SCORE</span><b id="final-score">0000</b></div></div><button id="retry-button" class="deploy-button">RUN IT BACK <span>↻</span></button></div></section>
+    <div class="toast" id="toast"></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
